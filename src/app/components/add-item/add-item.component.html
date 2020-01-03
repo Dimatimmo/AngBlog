@@ -1,0 +1,19 @@
+<div class="row" *ngIf="firebaseService.currentUser.role === 'admin'">
+  <div class="col s12">
+    <button class="btn addItem right" (click)="showModal()"><i class="fas fa-plus-circle"></i></button>
+  </div>
+</div>
+<form (ngSubmit)="onSubmit()" class="col s6" *ngIf="modalStatus">
+  <div class="row">
+    <div class="input-field col s6">
+      <input type="text" [(ngModel)]="item.title" name="title">
+      <label>Title</label>
+    </div>
+    <div class="input-field col s6">
+      <input type="text"  [(ngModel)]="item.description" name="description">
+      <label>Description</label>
+    </div>
+    <input type="submit" value="Submit" class="btn left">
+    <input value="Cancel"  type="submit" class="btn right" (click)="closeModal()">
+  </div>
+</form>

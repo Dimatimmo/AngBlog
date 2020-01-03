@@ -1,0 +1,33 @@
+<app-add-item></app-add-item>
+<div *ngIf="items?.length > 0;else noItems">
+  <ul *ngFor="let item of items" class="collection">
+    <li class="collection-item">
+      <a href="#" class="secondary-content">
+        <i (click) ="editItem($event, item)" class="fa fa-pencil" *ngIf="firebaseService.currentUser.role === 'admin'"></i>
+        <i *ngIf="editState && itemToEdit.id == item.id" (click) ="clearState()" class="fa fa-compress"></i>
+      </a>
+      <strong>{{item.title}}: </strong>
+      {{item.description}}
+      <p>Create time: {{item.time | date: 'MMM d, y, HH:mm:ss'}}</p>
+
+      <div *ngIf="editState && itemToEdit.id == item.id">
+        <form (ngSubmit)="updateItem(item)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+            </div>
+            <div class="input-field col s6">
+              <input type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description">
+            </div>
+            <button type="submit" value="Update Item" class="btn orange left">Update Item</button>
+            <button (click)="deleteItem($event, item)" class="btn red right">Delete Item</button>
+          </div>
+        </form>
+      </div>
+
+    </li>
+  </ul>
+
+<ng-template #noItems>
+  <h5> There are no items to list</h5>
+</ng-template>

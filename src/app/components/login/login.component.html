@@ -1,0 +1,19 @@
+
+<form (ngSubmit)="login(loginForm.value)" [formGroup]="loginForm">
+  <p>Login with Email and Password.</p>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="email" type="email" class="validate" formControlName="email">
+      <label for="email">Email</label>
+      <span class="helper-text" data-error="wrong" data-success="right"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="password" type="password" class="validate" formControlName="password">
+      <label for="password">Password</label>
+    </div>
+  </div>
+
+  <input type="submit" class="btn" [disabled]="!loginForm.valid" value="Log In">
+</form>
