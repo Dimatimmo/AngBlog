@@ -24,8 +24,6 @@ export class FirebaseService {
 
 
   signUp(email:string, password:string){
-
-
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
      .then((userResponse)=>{
        // add the user to the "users" database
@@ -58,7 +56,6 @@ export class FirebaseService {
     }
 
     login(email: string, password: string) {
-
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user)=>{
         this.firestore.collection("users").ref.where("username", "==", user.user.email).onSnapshot(snap =>{
@@ -98,7 +95,6 @@ export class FirebaseService {
             this.currentUser = userRef.data();
             //setUserStatus
             this.setUserStatus(this.currentUser);
-            console.log(this.userStatus)
             this.ngZone.run(() => this.router.navigate(["/"]));
           })
         })
@@ -110,5 +106,4 @@ export class FirebaseService {
       }
     })
   }
-
 }

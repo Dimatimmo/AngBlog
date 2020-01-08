@@ -5,15 +5,25 @@
 </div>
 <form (ngSubmit)="onSubmit()" class="col s6" *ngIf="modalStatus">
   <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s6 offset-s3">
       <input type="text" [(ngModel)]="item.title" name="title">
       <label>Title</label>
     </div>
-    <div class="input-field col s6">
-      <input type="text"  [(ngModel)]="item.description" name="description">
+    <div class="input-field col s6 offset-s3">
+      <textarea type="text"  [(ngModel)]="item.description" name="description" id="textarea1" class="materialize-textarea"></textarea>
       <label>Description</label>
     </div>
-    <input type="submit" value="Submit" class="btn left">
-    <input value="Cancel"  type="submit" class="btn right" (click)="closeModal()">
+    <div class="col s6 offset-s3">
+      <input #fileUploader type="file" name="file" id="file" (change)="uploadImage($event)">
+      <div>{{ uploadPercent | async }}</div>
+      <div [hidden]="!item.image">
+        <img [src]="item.image || '//:0' " width="300px" height="300px">
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <button type="submit" value="Submit" class="btn col s2 offset-s3">Submit</button>
+    <button value="Cancel"  type="submit" class="btn col s2 offset-s2" (click)="closeModal()">Cancel</button>
+  </div>
+
 </form>

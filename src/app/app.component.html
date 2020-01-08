@@ -1,17 +1,20 @@
-<div class="container">
-    <nav>
-      <div class="nav-wrapper row teal lighten-4">
-        <div class="col s12">
-          <a [routerLink]="[ '/' ]" class="teal-text darken-3 brand-logo">Role Based</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li *ngIf="!userStatus"><a [routerLink]="[ '/signup' ]" class="btn">Signup</a></li>
-            <li *ngIf="!userStatus"><a [routerLink]="[ '/login' ]" class="btn">Login</a></li>
-            <li *ngIf="userStatus"><button class="btn logout" (click)="logout()">Logout</button></li>
-          </ul>
-        </div>
+<nav class="teal lighten-4">
+  <div class="container ">
+    <div class="nav-wrapper row teal lighten-4">
+      <div class="col s12">
+        <a [routerLink]="[ '/' ]" class="teal-text darken-3 brand-logo">Role Based</a>
+        <ul id="nav-mobile" class="right">
+          <li *ngIf="!userStatus"><a [routerLink]="[ '/signup' ]" class="btn">Signup</a></li>
+          <li *ngIf="!userStatus"><a [routerLink]="[ '/login' ]" class="btn">Login</a></li>
+          <li *ngIf="userStatus"><button class="btn logout" (click)="logout()">Logout</button></li>
+        </ul>
       </div>
-    </nav>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+    </div>
   </div>
+</nav>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+

@@ -1,11 +1,19 @@
 
 <form (ngSubmit)="signup(signUpForm.value)" [formGroup]="signUpForm">
-  <p>Signup with Email and Password.</p>  
-  <label for="email">Email:</label>
-  <input type="email" name="email" formControlName="email">
-
-  <label for="password">Password:</label>
-  <input type="password" name="password" formControlName="password">
-
-  <input type="submit" [disabled]="!signUpForm.valid" value="Sign Up">
-</form> 
+  <div class="row"><p class="signup-title teal-text darken-3 bold-text center-align col s4 offset-s4">Signup with Email and Password.</p> </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <label for="email">Email:</label>
+      <input type="email" name="email" formControlName="email">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6 offset-s3">
+      <label for="password">Password:</label>
+      <input type="password" name="password" formControlName="password">
+    </div>
+  </div>
+  <div class="row">
+    <input  class="btn col s2 offset-s5" type="submit" [disabled]="!signUpForm.valid" value="Sign Up">
+  </div>
+</form>

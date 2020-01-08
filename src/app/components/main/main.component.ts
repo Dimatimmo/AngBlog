@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FirebaseService } from "../../services/firebase.service";
 import {Router} from "@angular/router";
@@ -14,7 +14,8 @@ export class MainComponent implements OnInit {
   items: Item[];
   editState: boolean = false;
   itemToEdit: Item;
-  constructor(private firebaseService: FirebaseService, private router: Router, private itemService: ItemService) { }
+
+  constructor(private firebaseService: FirebaseService, private router: Router, public itemService: ItemService ) { }
 
   onChanges() {
     this.itemService.getItems().subscribe(items => {
@@ -26,6 +27,7 @@ export class MainComponent implements OnInit {
     this.itemService.getItems().subscribe(items => {
       this.items = items;
     });
+
   }
 
   deleteItem(event, item: Item) {
@@ -40,12 +42,14 @@ export class MainComponent implements OnInit {
 
   clearState() {
     this.editState = false;
-    this.itemToEdit = null
+    this.itemToEdit = null;
   }
 
   updateItem(item: Item) {
     this.itemService.updateItem(item);
     this.clearState();
   }
-
+  prevent(event){
+    event.preventDefault();
+  }
 }

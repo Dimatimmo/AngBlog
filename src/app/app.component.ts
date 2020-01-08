@@ -9,7 +9,7 @@ import { FirebaseService } from "./services/firebase.service";
 export class AppComponent implements OnInit {
   title = 'angular-rolebased';
 
-  constructor(private firebaseService: FirebaseService){}
+  constructor(public firebaseService: FirebaseService){}
 
   userStatus = this.firebaseService.userStatus;
 
@@ -21,10 +21,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.firebaseService.userChanges();
+
     this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
     console.log(this.userStatus)
   }
-
-
 
 }

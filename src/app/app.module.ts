@@ -7,11 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
 
+
 //angularfire
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 
+import { MainModule } from "./components/main/main.module";
 
 @NgModule({
   declarations: [
@@ -24,9 +28,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireStorageModule,
+    MainModule
   ],
-  providers: [],
+  providers: [AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

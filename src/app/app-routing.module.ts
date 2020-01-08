@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from "@angular/router";
 import { AuthGuard } from "./components/auth/auth.guard";
+import { SingleItemComponent } from "./components/single-item/single-item.component";
 
 const routes: Routes = [
   { path: '', canActivate:[AuthGuard], data: {roles: ["user", "admin"]} , loadChildren: './components/main/main.module#MainModule' },
   { path: 'signup', loadChildren: './components/signup/signup.module#SignupModule' },
   { path: 'login', loadChildren: './components/login/login.module#LoginModule' },
-  { path: 'admin', canActivate:[AuthGuard], data: {roles: ["admin"]} ,loadChildren: './components/admin/admin.module#AdminModule' },
+  { path: ':id', component: SingleItemComponent }
 ]
 
 

@@ -2,5 +2,6 @@ export interface Item {
   id: string;
   title?: string;
   description?: string;
-  time?: any ;
+  image: string;
+  time?: Date ;
 }

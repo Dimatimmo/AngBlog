@@ -15,111 +15,16 @@ button{
   transition: all 0.3s;
 }
 
-// .btn {
-//   border: none;
-//   background: #8E2DE2;  /* fallback for old browsers */
-//   background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-//   background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-//   color: #eee;
-//   padding: 12px;
-//   font-size: 1.2rem;
-//   border-radius: 4px;
-//   opacity: 0.6;
-//   &:hover{
-//     opacity: 1;
-//     cursor: pointer;
-//   }
-// }
-// input {
-//   border: none;
-//   background: none;
-//   border-bottom: 1px solid #222;
-//   padding: 10px;
-//   width: 60%;
-//   text-align: center;
-//   font-size: 1.2rem;
-// }
-
-// input[type=submit]{
-//   margin-top: 20px;
-//   width: 30%;
-//   border: none;
-//   background: #8E2DE2;  /* fallback for old browsers */
-//   background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-//   background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-//   color: #eee;
-//   padding: 12px;
-//   font-size: 1.2rem;
-//   border-radius: 4px;
-//   opacity: 0.6;
-//   &:hover{
-//     opacity: 1;
-//     cursor: pointer;
-//   }
-// }
-
-// nav  {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   ul {
-//     margin: 0px;
-//     padding-top: 10px;
-//     display: flex;
-//     li {
-//       a {
-//         color: #eee;
-//         text-decoration: none;
-//       }
-//     }
-//   }
-
-// }
-
 nav {
   margin: 0 0 20px 0;
 }
 
-header div h1 {
-  font-size: 6rem;
-  line-height: 6rem;
-  margin-bottom: -10px;
+// img {
+//   width: 100%;
+// }
+
+.card-image{
+  height: 400px; /* Your height here */
+  overflow: hidden;
 }
 
-.main {
-  width: 80%;
-  border-radius: 10px;
-  margin: 0 auto;
-  background: #eee;
-  padding: 10px;
-  color: #222;
-  text-align: center;
-}
-.main img {
-  margin: 0 auto;
-  width: 80%;
-}
-
-.main p {
-  width: 60%;
-  margin: 20px auto;
-}
-
-
-form {
-  color: #222;
-  width: 50%;
-  margin: 0 auto 50px auto;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-  }
-form p {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-form label, form input {
-  display: block;
-  margin: 10px auto;
-}

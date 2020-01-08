@@ -8,9 +8,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   imports: [
     LoginRoutingModule,
-   CommonModule,
-   FormsModule,
-   ReactiveFormsModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [LoginComponent]
 })
