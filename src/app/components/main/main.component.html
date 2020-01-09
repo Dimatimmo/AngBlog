@@ -24,7 +24,7 @@
             <i *ngIf="editState && itemToEdit.id == item.id" (click) ="clearState()" class="fa fa-compress"></i>
           </a>
           <p>{{item.description}}</p>
-          <p>Create time: {{item.time.toDate() | date: 'MMM d, y, HH:mm:ss'}}</p>
+          <!-- <p>Create time: {{item.time.toDate() | date: 'MMM d, y, HH:mm:ss'}}</p> -->
           <div *ngIf="editState && itemToEdit.id == item.id">
             <div class="card-content">
               <form (ngSubmit)="updateItem(item)">

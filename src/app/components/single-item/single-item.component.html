@@ -1,7 +1,44 @@
-<h2>Product Details</h2>
-{{itemId}}
-{{title}}
-<div *ngIf="item">
-  <h3>{{ item.title }}</h3>
-  <p>{{ item.description }}</p>
+<div class="row">
+  <div class="col s12 m6 offset-m3">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{item.image}}">
+      </div>
+      <div class="card-content">
+        <span class="card-title">{{item.title}}</span>
+        <p>{{item.description}}</p>
+        <!-- <p>Create time: {{item.time.toDate() | date: 'MMM d, y, HH:mm:ss'}}</p> -->
+        <a href="#" class="secondary-content" (click) = "prevent($event)" *ngIf="firebaseService.currentUser.role === 'admin'">
+          <i (click) ="editItem($event, item)"class="fa fa-pencil"></i>
+          <i *ngIf="editState && itemToEdit.id == item.id" (click) ="clearState()" class="fa fa-compress"></i>
+        </a>
+        <div *ngIf="editState && itemToEdit.id == item.id">
+          <div class="card-content">
+            <form (ngSubmit)="updateItem(item)">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+                </div>
+                <div class="input-field col s12">
+                  <textarea type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description" id="textarea1" class="materialize-textarea"></textarea>
+                </div>
+                <div class="col s12">
+                  <input type="file" name="file" id="file" (change)="updateImage($event)">
+                  <div>{{ uploadPercent | async }}</div>
+                  <div [hidden]="!item.image">
+                    <img [src]="item.image || '//:0'" width="100%">
+                  </div>
+                </div>
+                <button type="submit" value="Update Item" class="btn orange left">Update Item</button>
+                <button (click)="deleteItem($event, item)" class="btn red right">Delete Item</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+

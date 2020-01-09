@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,  Router, ParamMap} from "@angular/router";
 import { ItemService } from '../../services/item.service';
 import { MainComponent } from '../main/main.component';
+import { FirebaseService } from '../../services/firebase.service'
 import { Item } from 'src/app/interfaces/item';
 
 
@@ -11,32 +12,44 @@ import { Item } from 'src/app/interfaces/item';
   styleUrls: ['./single-item.component.scss']
 })
 export class SingleItemComponent implements OnInit {
-  public itemId;
-  public item;
-  public items;
-  constructor(private route: ActivatedRoute, private itemService:ItemService, public mainComponent: MainComponent,  private router: Router) {
-
+  item;
+  editState: boolean = false;
+  itemToEdit: Item;
+  constructor(private route: ActivatedRoute,
+              private itemService:ItemService,
+              private router: Router,
+              private firebaseService:FirebaseService,
+              private mainComponent: MainComponent) {
   }
 
 
   ngOnInit() {
-
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      let id = params.get('id');
-      this.itemId = id;
-    });
-
-    this.itemService.getItems().subscribe(items => {
-       this.items = items;
-       console.log(this.item);
-    })
-
-    // this.route.paramMap.subscribe(params => {
-    //   this.item = this.items[+params.get('id')];
-    // });
-
-
+    this.route.queryParams.subscribe(item => this.item = item);
+    console.log(this.item)
   }
 
+  deleteItem(event, item: Item) {
+    this.clearState();
+    this.itemService.deleteItem(item);
+    this.router.navigate(['/']);
+  }
 
+  editItem(event, item: Item) {
+    this.editState = true;
+    this.itemToEdit = item;
+  }
+
+  clearState() {
+    this.editState = false;
+    this.itemToEdit = null;
+  }
+
+  updateItem(item: Item) {
+    this.itemService.updateItem(item);
+    this.clearState();
+  }
+
+  prevent(event){
+    event.preventDefault();
+  }
 }

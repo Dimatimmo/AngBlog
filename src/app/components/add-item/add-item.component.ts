@@ -56,7 +56,6 @@ export class AddItemComponent implements OnInit {
           }),
      )
     .subscribe();
-    // this.fileUploader.nativeElement.value = null;
     }
   }
 

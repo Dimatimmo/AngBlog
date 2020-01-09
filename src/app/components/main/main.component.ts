@@ -14,15 +14,9 @@ export class MainComponent implements OnInit {
   items: Item[];
   editState: boolean = false;
   itemToEdit: Item;
-  public selectedId;
+
 
   constructor(private firebaseService: FirebaseService, private router: Router, public itemService: ItemService ) { }
-
-  // onChanges() {
-  //   this.itemService.getItems().subscribe(items => {
-  //     this.items = items;
-  //   });
-  // }
 
   ngOnInit() {
     this.itemService.getItems().subscribe(items => {
@@ -53,7 +47,9 @@ export class MainComponent implements OnInit {
   }
 
   onSelect(item: Item) {
-     this.router.navigate([item.id]);
+     this.router.navigate([item.id],{
+      queryParams: item
+    });
   }
 
   prevent(event){
