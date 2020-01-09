@@ -13,20 +13,20 @@ export class ItemService {
   items: Observable<Item[]>;
   itemDoc: AngularFirestoreDocument<Item>;
   constructor(public afs: AngularFirestore) {
+  }
 
-    this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('time','desc'));
+  getOrderItems() {
+    return this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('time','desc'));
+  }
 
-    this.items = this.itemsCollection.snapshotChanges().map(changes => {
+  getItems() {
+    return this.items = this.getOrderItems().snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Item;
         data.id = a.payload.doc.id;
         return data;
       });
     });
-  }
-
-  getItems() {
-    return this.items;
   }
 
   addItem(item: Item) {

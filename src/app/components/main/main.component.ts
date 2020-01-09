@@ -18,14 +18,15 @@ export class MainComponent implements OnInit {
 
   constructor(private firebaseService: FirebaseService, private router: Router, public itemService: ItemService ) { }
 
-  onChanges() {
-    this.itemService.getItems().subscribe(items => {
-      this.items = items;
-    });
-  }
+  // onChanges() {
+  //   this.itemService.getItems().subscribe(items => {
+  //     this.items = items;
+  //   });
+  // }
 
   ngOnInit() {
     this.itemService.getItems().subscribe(items => {
+      console.log(items)
       this.items = items;
     });
 
