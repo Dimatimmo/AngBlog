@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.firebaseService.userChanges();
-
     this.firebaseService.userStatusChanges.subscribe(x => this.userStatus = x);
     console.log(this.userStatus)
   }

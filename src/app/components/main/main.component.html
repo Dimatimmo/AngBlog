@@ -12,7 +12,7 @@
             {{item.title}}
             <i class="fas fa-info-circle right  teal-text darken-3"></i>
           </span>
-          <a [routerLink]="['', item.id]">Подробнее</a>
+          <a (click) ="onSelect(item)">Подробнее</a>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">

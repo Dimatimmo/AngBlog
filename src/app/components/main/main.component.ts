@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   items: Item[];
   editState: boolean = false;
   itemToEdit: Item;
+  public selectedId;
 
   constructor(private firebaseService: FirebaseService, private router: Router, public itemService: ItemService ) { }
 
@@ -49,6 +50,11 @@ export class MainComponent implements OnInit {
     this.itemService.updateItem(item);
     this.clearState();
   }
+
+  onSelect(item: Item) {
+     this.router.navigate([item.id]);
+  }
+
   prevent(event){
     event.preventDefault();
   }

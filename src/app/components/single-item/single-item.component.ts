@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from "@angular/router";
+import { ActivatedRoute,  Router, ParamMap} from "@angular/router";
 import { ItemService } from '../../services/item.service';
 import { MainComponent } from '../main/main.component';
 import { Item } from 'src/app/interfaces/item';
@@ -11,28 +11,26 @@ import { Item } from 'src/app/interfaces/item';
   styleUrls: ['./single-item.component.scss']
 })
 export class SingleItemComponent implements OnInit {
-  items: Item[];
-  item;
-  constructor(private route: ActivatedRoute, private itemService:ItemService, public mainComponent: MainComponent) {
+  public itemId;
+  public item;
+  public items;
+  constructor(private route: ActivatedRoute, private itemService:ItemService, public mainComponent: MainComponent,  private router: Router) {
 
   }
 
-  onChanges() {
-    this.itemService.getItems().subscribe(items => {
-      this.items = items;
-    });
-  }
 
   ngOnInit() {
-    this.itemService.getItems().subscribe(items => {
-      this.items = items;
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = params.get('id');
+      this.itemId = id;
     });
 
+    this.itemService.getItems().subscribe(items => {
+       this.items = items;
+       console.log(this.item);
+    })
 
-    // this.itemService.getItems().subscribe(items => {
-    //   this.items = items;
-    //   console.log(this.items);
-    // });
     // this.route.paramMap.subscribe(params => {
     //   this.item = this.items[+params.get('id')];
     // });
