@@ -5,14 +5,13 @@
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="{{item.image}}">
-          {{item.image}}
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">
             {{item.title}}
             <i class="fas fa-info-circle right  teal-text darken-3"></i>
           </span>
-          <a (click) ="onSelect(item)">Подробнее</a>
+          <a (click) ="onSelect(item)" class="waves-effect waves-light btn-small">Подробнее</a>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">

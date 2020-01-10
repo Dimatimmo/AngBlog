@@ -53,7 +53,6 @@ export class MainComponent implements OnInit {
   }
 
   updateItem(item: Item) {
-    item.image = this.downloadResponse;
     this.itemService.updateItem(item);
     this.clearState();
   }
@@ -80,7 +79,7 @@ export class MainComponent implements OnInit {
           finalize(() => {
             this.downloadURL = fileRef.getDownloadURL();
             this.downloadURL.subscribe(downloadURLResponse => {
-              this.downloadResponse= downloadURLResponse;
+              item.image = downloadURLResponse;
             });
           }),
      )
