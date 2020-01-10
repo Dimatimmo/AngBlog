@@ -18,6 +18,6 @@ import { SingleItemComponent } from '../single-item/single-item.component';
     AddItemComponent,
     SingleItemComponent
   ],
-  providers: [MainComponent],
+  providers: [MainComponent, AddItemComponent],
 })
 export class MainModule { }

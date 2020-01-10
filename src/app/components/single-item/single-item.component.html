@@ -23,7 +23,7 @@
                   <textarea type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description" id="textarea1" class="materialize-textarea"></textarea>
                 </div>
                 <div class="col s12">
-                  <input type="file" name="file" id="file" (change)="updateImage($event)">
+                  <input type="file" name="file" id="file" (change)="uploadImage($event, item)">
                   <div>{{ uploadPercent | async }}</div>
                   <div [hidden]="!item.image">
                     <img [src]="item.image || '//:0'" width="100%">
