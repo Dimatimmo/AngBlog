@@ -18,7 +18,7 @@
             {{item.title}}
             <i class="fas fa-times right teal-text darken-3"></i>
           </span>
-          <a href="#" class="secondary-content" (click) = "prevent($event)" *ngIf="firebaseService.currentUser.role === 'admin'">
+          <a href="#" class="secondary-content" (click) = "prevent($event)" *hideAdminButtons="status">
             <i (click) ="editItem($event, item)"class="fa fa-pencil"></i>
             <i *ngIf="editState && itemToEdit.id == item.id" (click) ="clearState()" class="fa fa-compress"></i>
           </a>
@@ -37,8 +37,8 @@
                   <div class="col s12">
                     <input  #fileUploader type="file" name="file" id="file" (change)="uploadImage($event, item)">
                     <div>{{ uploadPercent | async }}</div>
-                    <div [hidden]="!downloadResponse">
-                      <img [src]="downloadResponse || '//:0'" width="100%">
+                    <div [hidden]="!item.image">
+                      <img [src]="item.image || '//:0'" width="100%">
                     </div>
                   </div>
                   <button type="submit" value="Update Item" class="btn orange left">Update Item</button>

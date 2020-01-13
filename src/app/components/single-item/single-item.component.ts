@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,  Router, ParamMap} from "@angular/router";
-import { ItemService } from '../../services/item.service';
+import { PostService } from '../../services/post.service';
 import { MainComponent } from '../main/main.component';
 import { FirebaseService } from '../../services/firebase.service'
 import { Item } from 'src/app/interfaces/item';
@@ -19,8 +19,9 @@ export class SingleItemComponent implements OnInit {
   itemToEdit: Item;
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
+  status = this.firebaseService.currentUser.role === 'admin';
   constructor(private route: ActivatedRoute,
-              private itemService:ItemService,
+              private postService:PostService,
               private router: Router,
               private firebaseService:FirebaseService,
               private mainComponent: MainComponent,
@@ -35,7 +36,7 @@ export class SingleItemComponent implements OnInit {
 
   deleteItem(event, item: Item) {
     this.clearState();
-    this.itemService.deleteItem(item);
+    this.postService.deleteItem(item);
     this.router.navigate(['/']);
   }
 
@@ -50,7 +51,7 @@ export class SingleItemComponent implements OnInit {
   }
 
   updateItem(item: Item) {
-    this.itemService.updateItem(item);
+    this.postService.updateItem(item);
     this.clearState();
   }
 

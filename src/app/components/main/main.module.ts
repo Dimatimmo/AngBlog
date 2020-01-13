@@ -5,6 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { AddItemComponent } from '../add-item/add-item.component'
 import { SingleItemComponent } from '../single-item/single-item.component';
+import { HideAdminButtonsDirective } from '../../directive/hide-admin-buttons.directive'
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SingleItemComponent } from '../single-item/single-item.component';
   declarations: [
     MainComponent,
     AddItemComponent,
-    SingleItemComponent
+    SingleItemComponent,
+    HideAdminButtonsDirective
   ],
   providers: [MainComponent, AddItemComponent],
 })

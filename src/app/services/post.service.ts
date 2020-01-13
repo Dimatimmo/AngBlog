@@ -8,7 +8,7 @@ import 'rxjs/Rx';
 @Injectable({
   providedIn: 'root'
 })
-export class ItemService {
+export class PostService {
   itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
   itemDoc: AngularFirestoreDocument<Item>;

@@ -8,7 +8,7 @@
         <span class="card-title">{{item.title}}</span>
         <p>{{item.description}}</p>
         <!-- <p>Create time: {{item.time.toDate() | date: 'MMM d, y, HH:mm:ss'}}</p> -->
-        <a href="#" class="secondary-content" (click) = "prevent($event)" *ngIf="firebaseService.currentUser.role === 'admin'">
+        <a href="#" class="secondary-content" (click) = "prevent($event)" *hideAdminButtons="status">
           <i (click) ="editItem($event, item)"class="fa fa-pencil"></i>
           <i *ngIf="editState && itemToEdit.id == item.id" (click) ="clearState()" class="fa fa-compress"></i>
         </a>

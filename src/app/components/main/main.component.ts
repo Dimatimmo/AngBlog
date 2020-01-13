@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { FirebaseService } from "../../services/firebase.service";
 import {Router} from "@angular/router";
-import { ItemService } from '../../services/item.service';
+import { PostService } from '../../services/post.service';
 import { Item } from '../../interfaces/item';
 import { AddItemComponent } from '../add-item/add-item.component'
 import { Observable } from 'rxjs';
@@ -20,26 +20,26 @@ export class MainComponent implements OnInit {
   itemToEdit: Item;
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
+  status = this.firebaseService.currentUser.role === 'admin';
   downloadResponse;
 
   constructor(private firebaseService: FirebaseService,
               private router: Router,
-              public itemService: ItemService,
+              public postService: PostService,
               private addItemComponent:AddItemComponent,
               public afs: AngularFirestore,
               private storage: AngularFireStorage ) { }
 
   ngOnInit() {
-    this.itemService.getItems().subscribe(items => {
+    this.postService.getItems().subscribe(items => {
       console.log(items)
       this.items = items;
     });
-
   }
 
   deleteItem(event, item: Item) {
     this.clearState();
-    this.itemService.deleteItem(item);
+    this.postService.deleteItem(item);
   }
 
   editItem(event, item: Item) {
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
   }
 
   updateItem(item: Item) {
-    this.itemService.updateItem(item);
+    this.postService.updateItem(item);
     this.clearState();
   }
 

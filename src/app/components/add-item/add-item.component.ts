@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {ItemService} from '../../services/item.service';
+import {PostService} from '../../services/post.service';
 import { Item } from '../../interfaces/Item';
 import { FirebaseService } from "../../services/firebase.service";
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -29,7 +29,7 @@ export class AddItemComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
 
-  constructor(private firebaseService: FirebaseService, private itemService: ItemService, public afs: AngularFirestore, private storage: AngularFireStorage) {
+  constructor(private firebaseService: FirebaseService, private postService: PostService, public afs: AngularFirestore, private storage: AngularFireStorage) {
    }
 
   ngOnInit() {
@@ -61,7 +61,7 @@ export class AddItemComponent implements OnInit {
 
   onSubmit() {
     if(this.item.title !="" && this.item.description != ""){
-      this.itemService.addItem(this.item);
+      this.postService.addItem(this.item);
       this.item.title = "";
       this.item.description ="";
       this.item.time = new Date();
